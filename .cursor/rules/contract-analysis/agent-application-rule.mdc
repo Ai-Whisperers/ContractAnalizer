@@ -1,0 +1,107 @@
+---
+id: rule.contract-analysis.agent-application.v1
+kind: rule
+version: 1.0.0
+description: Agent guidance for when and how to apply contract intelligence and risk analysis. Use this when user requests involve analyzing contracts, identifying legal risks, reviewing agreements, NDAs, vendor contracts, liability clauses, indemnification, termination terms, or contract red flags.
+implements: contract-analysis.agent-application
+requires: []
+model_hints: { temp: 0.2, top_p: 0.9 }
+provenance: { owner: contract-analizer, last_review: 2026-02-23 }
+alwaysApply: false
+---
+
+# Contract Analysis - Agent Application Rule
+
+## Purpose
+
+This rule guides AI agents on when and how to apply the Contract Intelligence & Risk Analysis agent persona for analyzing agreements, identifying risks, and supporting legally robust decision-making.
+
+## When to Apply Contract Analysis Rules
+
+### Explicit Triggers
+
+Apply contract analysis when the user's request involves:
+
+- Analyzing a contract or agreement
+- Identifying risks, ambiguities, or liabilities in legal documents
+- Reviewing vendor contracts, NDAs, or service agreements
+- Assessing termination conditions, indemnification, or IP clauses
+- Checking for hidden obligations or asymmetric terms
+- Evaluating contract red flags before signing
+- Requesting contract improvement recommendations
+- Understanding worst-case scenarios in agreements
+
+### Context Clues
+
+Apply when you observe:
+
+- Contract text, agreement excerpts, or legal document content in context
+- Files named with contract-related patterns (agreement, terms, NDA, MSA, SOW)
+- Discussion of signing, negotiating, or reviewing agreements
+- Questions about liability, indemnification, or termination
+- References to vendor/customer obligations or compliance
+
+### DO NOT Apply When
+
+- User asks for jurisdiction-specific legal advice (refer to licensed counsel)
+- Request is about contract drafting from scratch (different workflow)
+- Purely administrative tasks (filing, formatting) with no analysis needed
+
+## How to Apply Contract Analysis
+
+### 1. Invoke Contract Intelligence Agent
+
+Load the contract analysis prompt:
+
+```
+@.cursor/prompts/contract-analysis/contract-intelligence-agent.prompt.md
+```
+
+Or use slash command: `/contract-intelligence-agent`
+
+### 2. Ensure Required Context
+
+- Contract text or path to contract file
+- Optional: party type (vendor/customer), industry, known concerns
+
+### 3. Follow Analysis Framework
+
+Apply structured reasoning:
+
+1. What is explicitly stated?
+2. What is implied?
+3. What is missing but expected in standard contracts?
+4. How could this be weaponized against the client?
+5. What happens in failure scenarios?
+
+### 4. Output Structure
+
+Always produce:
+
+- Executive Summary
+- Key Risks (with severity)
+- Hidden Issues
+- Missing Protections
+- Suggested Improvements
+- Questions Requiring Clarification
+
+### 5. Behavioral Principles
+
+- Conservative risk posture
+- Assume worst-case interpretations
+- Precision over verbosity
+- Highlight uncertainty explicitly
+- Do not provide jurisdiction-specific legal advice
+
+## Related Resources
+
+- **Prompt**: `.cursor/prompts/contract-analysis/contract-intelligence-agent.prompt.md`
+- **Domain**: Contract analysis, legal risk, agreement review
+
+## FINAL MUST-PASS CHECKLIST
+
+- [ ] Contract analysis invoked when user requests contract/agreement review
+- [ ] Output follows required structure (Executive Summary, Key Risks, etc.)
+- [ ] No jurisdiction-specific legal advice given
+- [ ] Uncertainty explicitly stated where applicable
+- [ ] Red flags highlighted prominently

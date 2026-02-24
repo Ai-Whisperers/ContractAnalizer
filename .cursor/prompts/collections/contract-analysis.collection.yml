@@ -1,0 +1,14 @@
+id: contract-analysis-bundle
+name: "Contract Intelligence & Risk Analysis"
+description: "Prompts for analyzing contracts, identifying risks, and supporting legally robust agreements"
+tags:
+  - contract
+  - legal
+  - risk
+  - analysis
+  - liability
+version: 1.0.0
+owner: contract-analizer
+items:
+  - path: contract-analysis/contract-intelligence-agent.prompt.md
+    kind: prompt

@@ -1,0 +1,22 @@
+# SpecStory
+.specstory/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.suo
+*.user
+
+# Build / dependencies
+bin/
+obj/
+node_modules/
+
+# Secrets
+*.env
+.env.local
+.env.*.local
